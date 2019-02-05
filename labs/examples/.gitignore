@@ -1,0 +1,9 @@
+**/.settings
+**/target
+**/bin
+**/.metadata
+**/.recommenders
+Servers/**
+*.classpath
+*.project
+*.springBeans
