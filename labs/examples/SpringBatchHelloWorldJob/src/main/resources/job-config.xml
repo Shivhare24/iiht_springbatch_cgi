@@ -10,19 +10,21 @@
          
    <!-- Defining a bean --> 
    <bean id = "tasklet" class = "com.examples.spring.batch.MyTasklet" />
+   
+   <bean id = "tasklet1" class = "com.examples.spring.batch.MyTasklet1" />
      
    <!-- Defining a job--> 
    <batch:job id = "helloWorldJob" >  
       <!-- Defining a Step --> 
-      <batch:step id = "step1"> 
+      <batch:step id = "step1" next="step2"> 
          <tasklet ref = "tasklet"/>   
       </batch:step>    
-<!--       <batch:step id = "step2" parent="step1"> 
-         <tasklet ref = "tasklet"/>   
+      <batch:step id = "step2" next="step3" parent="step1"> 
+         <tasklet ref = "tasklet1"/>   
       </batch:step>   
             <batch:step id = "step3" parent="step2"> 
          <tasklet ref = "tasklet"/>   
-      </batch:step>   -->       
+      </batch:step>         
    </batch:job>
      
 </beans> 
