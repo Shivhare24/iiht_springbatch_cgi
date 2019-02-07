@@ -1,0 +1,22 @@
+<beans xmlns = "http://www.springframework.org/schema/beans" 
+   xmlns:batch = "http://www.springframework.org/schema/batch" 
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation = "http://www.springframework.org/schema/batch 
+      http://www.springframework.org/schema/batch/spring-batch.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd ">
+       
+   <import resource="context.xml" />
+         
+   <!-- Defining a bean --> 
+   <bean id = "tasklet" class = "com.examples.spring.batch.service.HelloWorldTasklet" />
+   
+   <!-- Defining a job--> 
+   <batch:job id = "helloWorldJob" >  
+      <!-- Defining a Step --> 
+      <batch:step id = "step1"> 
+         <tasklet ref = "tasklet"/>   
+      </batch:step>     
+   </batch:job>
+     
+</beans> 
