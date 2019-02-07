@@ -25,9 +25,9 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import com.examples.spring.batch.model.Transaction;
 import com.examples.spring.batch.service.CustomItemProcessor;
-import com.examples.spring.batch.service.RecordFieldSetMapper;
+import com.examples.spring.batch.service.TransactionFieldSetMapper;
 
-public class SpringBatchConfig {
+public class JobConfig {
     
     @Autowired
     private JobBuilderFactory jobs;
@@ -35,10 +35,10 @@ public class SpringBatchConfig {
     @Autowired
     private StepBuilderFactory steps;
  
-    @Value("input/record.csv")
+    @Value("input/transactions.csv")
     private Resource inputCsv;
  
-    @Value("file:xml/output.xml")
+    @Value("file:target/output/transactions.xml")
     private Resource outputXml;
  
     @Bean
@@ -52,7 +52,7 @@ public class SpringBatchConfig {
         DefaultLineMapper<Transaction> lineMapper = 
           new DefaultLineMapper<Transaction>();
         lineMapper.setLineTokenizer(tokenizer);
-        lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
+        lineMapper.setFieldSetMapper(new TransactionFieldSetMapper());
         reader.setLineMapper(lineMapper);
         return reader;
     }
@@ -68,7 +68,7 @@ public class SpringBatchConfig {
         StaxEventItemWriter<Transaction> itemWriter = 
           new StaxEventItemWriter<Transaction>();
         itemWriter.setMarshaller(marshaller);
-        itemWriter.setRootTagName("transactionRecord");
+        itemWriter.setRootTagName("transactions");
         itemWriter.setResource(outputXml);
         return itemWriter;
     }

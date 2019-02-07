@@ -21,7 +21,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableBatchProcessing
-public class SpringConfig {
+public class ContextConfig {
 
 	@Value("org/springframework/batch/core/schema-drop-mysql.sql")
 	private Resource dropReopsitoryTables;
@@ -33,7 +33,7 @@ public class SpringConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/spring_training");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/sbatch_training");
 		dataSource.setUsername("training");
 		dataSource.setPassword("training");
 		return dataSource;
@@ -59,7 +59,7 @@ public class SpringConfig {
 		factory.setDataSource(dataSource());
 		factory.setTransactionManager(getTransactionManager());
 		factory.afterPropertiesSet();
-		return (JobRepository) factory.getObject();
+		return (JobRepository) factory.getObject();		
 	}
 
 	private PlatformTransactionManager getTransactionManager() {

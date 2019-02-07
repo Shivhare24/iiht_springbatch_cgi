@@ -9,7 +9,7 @@ import org.springframework.validation.BindException;
 
 import com.examples.spring.batch.model.Transaction;
 
-public class RecordFieldSetMapper implements FieldSetMapper<Transaction> {
+public class TransactionFieldSetMapper implements FieldSetMapper<Transaction> {
 	 
     public Transaction mapFieldSet(FieldSet fieldSet) throws BindException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

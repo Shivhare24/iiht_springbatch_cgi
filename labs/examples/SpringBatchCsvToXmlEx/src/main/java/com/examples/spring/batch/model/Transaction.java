@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("restriction")
-@XmlRootElement(name = "transactionRecord")
+@XmlRootElement(name = "transaction")
 public class Transaction {
     private String username;
     private int userId;

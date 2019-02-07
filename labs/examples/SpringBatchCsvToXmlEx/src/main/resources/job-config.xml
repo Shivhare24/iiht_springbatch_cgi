@@ -9,12 +9,13 @@
 
 	<import resource="context.xml" />
 
-	<bean id="record"
-		class="com.examples.spring.batch.model.Transaction"></bean>
+	<bean id="transaction"
+		class="com.examples.spring.batch.model.Transaction" />
+		
 	<bean id="itemReader"
 		class="org.springframework.batch.item.file.FlatFileItemReader">
 
-		<property name="resource" value="input/record.csv" />
+		<property name="resource" value="input/transactions.csv" />
 
 		<property name="lineMapper">
 			<bean
@@ -28,7 +29,7 @@
 				</property>
 				<property name="fieldSetMapper">
 					<bean
-						class="com.examples.spring.batch.service.RecordFieldSetMapper" />
+						class="com.examples.spring.batch.service.TransactionFieldSetMapper" />
 				</property>
 			</bean>
 		</property>
@@ -39,12 +40,12 @@
 
 	<bean id="itemWriter"
 		class="org.springframework.batch.item.xml.StaxEventItemWriter">
-		<property name="resource" value="file:xml/output.xml" />
-		<property name="marshaller" ref="recordMarshaller" />
-		<property name="rootTagName" value="transactionRecord" />
+		<property name="resource" value="file:target/output/transactions.xml" />
+		<property name="marshaller" ref="transactionMarshaller" />
+		<property name="rootTagName" value="transactions" />
 	</bean>
 
-	<bean id="recordMarshaller"
+	<bean id="transactionMarshaller"
 		class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 		<property name="classesToBeBound">
 			<list>

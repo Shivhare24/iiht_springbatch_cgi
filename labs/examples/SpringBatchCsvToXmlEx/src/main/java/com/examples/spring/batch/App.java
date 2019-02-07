@@ -8,8 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.examples.spring.batch.config.SpringBatchConfig;
-import com.examples.spring.batch.config.SpringConfig;
+import com.examples.spring.batch.config.JobConfig;
+import com.examples.spring.batch.config.ContextConfig;
 
 public class App {
 	public static void main(String[] args) {
@@ -18,8 +18,8 @@ public class App {
 
 		// Spring Java config
 //        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-//        context.register(SpringConfig.class);
-//        context.register(SpringBatchConfig.class);
+//        context.register(ContextConfig.class);
+//        context.register(JobConfig.class);
 //        context.refresh();    	
 
 		JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
