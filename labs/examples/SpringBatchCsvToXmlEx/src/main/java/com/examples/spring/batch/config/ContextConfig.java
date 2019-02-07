@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+//import org.springframework.jdbc.datasource.DriverManagerDataSource;
+//import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+//import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -29,34 +29,34 @@ public class ContextConfig {
 	@Value("org/springframework/batch/core/schema-mysql.sql")
 	private Resource dataReopsitorySchema;
 
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/sbatch_training");
-		dataSource.setUsername("training");
-		dataSource.setPassword("training");
-		return dataSource;
-	}
+//	@Bean
+//	public DataSource dataSource() {
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+//		dataSource.setUrl("jdbc:mysql://localhost:3306/sbatch_training");
+//		dataSource.setUsername("training");
+//		dataSource.setPassword("training");
+//		return dataSource;
+//	}
 
-	@Bean
-	public DataSourceInitializer dataSourceInitializer(DataSource dataSource) throws MalformedURLException {
-		ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-
-		databasePopulator.addScript(dropReopsitoryTables);
-		databasePopulator.addScript(dataReopsitorySchema);
-		databasePopulator.setIgnoreFailedDrops(true);
-
-		DataSourceInitializer initializer = new DataSourceInitializer();
-		initializer.setDataSource(dataSource);
-		initializer.setDatabasePopulator(databasePopulator);
-
-		return initializer;
-	}
+//	@Bean
+//	public DataSourceInitializer dataSourceInitializer(DataSource dataSource) throws MalformedURLException {
+//		ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+//
+//		databasePopulator.addScript(dropReopsitoryTables);
+//		databasePopulator.addScript(dataReopsitorySchema);
+//		databasePopulator.setIgnoreFailedDrops(true);
+//
+//		DataSourceInitializer initializer = new DataSourceInitializer();
+//		initializer.setDataSource(dataSource);
+//		initializer.setDatabasePopulator(databasePopulator);
+//
+//		return initializer;
+//	}
 
 	private JobRepository getJobRepository() throws Exception {
 		JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-		factory.setDataSource(dataSource());
+//		factory.setDataSource(dataSource());
 		factory.setTransactionManager(getTransactionManager());
 		factory.afterPropertiesSet();
 		return (JobRepository) factory.getObject();		
