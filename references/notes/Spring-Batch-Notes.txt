@@ -1,0 +1,42 @@
+Batch Processing Overview
+Need for Batch Processing
+Business Scenerios for Batch Processing
+
+Spring Batch
+	- History
+	- Features - Providing underlyin infra to run batch apps, Logging, Transaction Mgmt, Resource Mgmt, etc..
+	- Architecture
+		- Batch Application
+		- Batch Core
+		- Batch Infrastructure
+	- Domain Model
+		- JobRepository
+		- JobLauncher
+		- Job
+			- JobInstance
+			- JobExecution
+		- Step
+			- StepExecution
+		- ItemReader
+		- ItemWriter
+		- ItemProcessor
+		- ExecutionContext
+		- JobOperator
+		- JobExplorer
+		- JobRegistry
+	- Batch Application Use case
+		- Transactions - username, userId, transactionDate, amount
+		- BatchApp 01: CSV -> Processing -> XML
+		- BatchApp 02: XML -> Processing -> DB (MySQL)
+		- BatchApp 03: DB -> Processing -> Flat File (.txt)
+		- XML based configuration
+		- Java based configuration
+	- Batch MetaData details -> MySQLn
+	
+	- BatchApp 01: CSV -> Processing -> XML
+	1) Create Java Maven project
+	2) Add required dependencies in pom.xml -> spring-batch-core, spring-oxm
+	3) Create context configuration file -> JobRepository, JobLauncher
+	4) Create job configuration file -> Job, Step, Reader, Writer, Processor
+	5) Create Processor, Mapper, Model classes
+	6) Create Main class and Launch Job
