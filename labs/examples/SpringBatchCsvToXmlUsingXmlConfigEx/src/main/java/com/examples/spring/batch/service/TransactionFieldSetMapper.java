@@ -11,6 +11,9 @@ import com.examples.spring.batch.model.Transaction;
 
 public class TransactionFieldSetMapper implements FieldSetMapper<Transaction> {
 	 
+    /* 
+     * Maps input record fields to model object properties.
+     */
     public Transaction mapFieldSet(FieldSet fieldSet) throws BindException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Transaction transaction = new Transaction();

@@ -4,14 +4,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/batch
     http://www.springframework.org/schema/batch/spring-batch.xsd
     http://www.springframework.org/schema/beans 
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-">
+    http://www.springframework.org/schema/beans/spring-beans.xsd ">
 
+	<!-- Imports context.xml configurations into this config file -->
 	<import resource="context.xml" />
 
+	<!-- Domain/model object definition which models input/output item -->
 	<bean id="transaction"
 		class="com.examples.spring.batch.model.Transaction" />
 		
+	<!-- Reader configuration to read data from flat file (csv) -->		
 	<bean id="itemReader"
 		class="org.springframework.batch.item.file.FlatFileItemReader">
 
@@ -35,9 +37,11 @@
 		</property>
 	</bean>
 
+	<!-- Processor configuration to process input item -->	
 	<bean id="itemProcessor"
 		class="com.examples.spring.batch.service.CustomItemProcessor" />
 
+	<!-- Writer configuration to write data into XML document -->
 	<bean id="itemWriter"
 		class="org.springframework.batch.item.xml.StaxEventItemWriter">
 		<property name="resource" value="file:target/output/transactions.xml" />
@@ -45,6 +49,7 @@
 		<property name="rootTagName" value="transactions" />
 	</bean>
 
+	<!-- Marshaller configuration to bind Transaction object properties to XML -->
 	<bean id="transactionMarshaller"
 		class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 		<property name="classesToBeBound">
@@ -54,6 +59,7 @@
 		</property>
 	</bean>
 	
+	<!-- Batch job configuration -->
 	<batch:job id="csvToXmlBatchJob">
 		<batch:step id="step1">
 			<batch:tasklet>
