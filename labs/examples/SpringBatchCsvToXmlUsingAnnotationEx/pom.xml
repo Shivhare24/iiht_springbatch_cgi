@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.examples.spring.batch</groupId>
+  <artifactId>SpringBatchCsvToXmlEx</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>5.1.4.RELEASE</spring.version>
+        <spring.batch.version>4.1.1.RELEASE</spring.batch.version>
+		<mysql.driver.version>5.1.47</mysql.driver.version>
+    </properties>
+ 
+    <dependencies>
+		<!-- Spring Batch dependencies -->    
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>            
+     
+		<!-- Spring XML to/back object -->     
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+		<!-- Spring jdbc, for database -->        
+<!--         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency> -->
+        
+		<!-- MySQL database driver -->
+<!-- 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.driver.version}</version>
+		</dependency>   --> 
+        
+    </dependencies>  
+</project>
